@@ -1,0 +1,64 @@
+{
+  "tests": [
+    {
+      "name": "Setup Environment",
+      "setup": "",
+      "run": "sudo apt-get update; sudo apt-get install git build-essential gdb-multiarch qemu-system-misc gcc-riscv64-linux-gnu binutils-riscv64-linux-gnu",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 30,
+      "points": null
+    },
+    {
+      "name": "trace-32-grep",
+      "setup": "",
+      "run": "./grade-lab-syscall \"trace 32 grep\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 15
+    },
+    {
+      "name": "trace-all-grep",
+      "setup": "",
+      "run": "./grade-lab-syscall \"trace all grep\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 15
+    },
+    {
+      "name": "trace-nothing",
+      "setup": "",
+      "run": "./grade-lab-syscall \"trace nothing\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "trace-children",
+      "setup": "",
+      "run": "./grade-lab-syscall \"trace children\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 15
+    },
+    {
+      "name": "sysinfo-test",
+      "setup": "",
+      "run": "./grade-lab-syscall \"sysinfotest\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 50
+    }
+  ]
+}
