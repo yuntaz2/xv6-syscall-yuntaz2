@@ -682,3 +682,21 @@ void procdump(void)
     printf("\n");
   }
 }
+
+// lab-2 activity-2: get number of not unused processors.
+uint64 getNproc()
+{
+  struct proc *p;
+  uint64 counter = 0;
+
+  for (p = proc; p < &proc[NPROC]; p++)
+  {
+    acquire(&p->lock);
+    if (p->state != UNUSED)
+    {
+      counter++;
+    }
+    release(&p->lock);
+  }
+  return counter;
+}

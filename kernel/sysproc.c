@@ -6,6 +6,11 @@
 #include "memlayout.h"
 #include "spinlock.h"
 #include "proc.h"
+#include "sysinfo.h"
+
+// explicit declaration of two functions from lab-2 activity-2
+uint64 getFreemem(void);
+uint64 getNproc(void);
 
 uint64
 sys_exit(void)
@@ -138,5 +143,33 @@ sys_trace(void)
   // printf("sys_trace is called with arg %d\n", mask);
   else
     printf("No current process");
+  return 0;
+}
+
+// lab-2 activity-2: add a sys_sysinfo() function
+uint64
+sys_sysinfo(void)
+{
+  struct proc *currProc = myproc();
+  struct sysinfo sysinfo;
+  uint64 sysinfoAddr; // user pointer to struct sysinfo
+
+  // It takes one argument: a pointer to a struct sysinfo
+  if (argaddr(0, &sysinfoAddr) < 0)
+  {
+    printf("argaddr() fail to retrieve an argument as a pointer.\n");
+    return -1;
+  }
+
+  // Fill out the fields of struct sysinfo
+  sysinfo.freemem = getFreemem(); // get the number of free memory
+  sysinfo.nproc = getNproc();     // get the number of not unused processors
+
+  // copy struct sysinfo back to user space
+  if (copyout(currProc->pagetable, sysinfoAddr, (char *)&sysinfo, sizeof(sysinfo)) < 0)
+  {
+    printf("copyout() fail to copy a struct sysinfo back to user space.\n");
+    return -1;
+  }
   return 0;
 }

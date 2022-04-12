@@ -101,9 +101,11 @@ extern uint64 sys_wait(void);
 extern uint64 sys_write(void);
 extern uint64 sys_uptime(void);
 extern uint64 sys_pidguess(void); // extern(al) means the function is defined external and defined somewhere else;
-extern uint64 sys_trace(void);
+extern uint64 sys_trace(void);    // lab-2 activity-1: implement the system call in the kernel.
+extern uint64 sys_sysinfo(void);  // lab-2 activity-2: implement the system call in the kernel.
 // void parameter is because the user cannot pass parameter to kernal directly;
 
+// [idx] value(in this case functional pointer)
 static uint64 (*syscalls[])(void) = {
     [SYS_fork] sys_fork,
     [SYS_exit] sys_exit,
@@ -127,8 +129,8 @@ static uint64 (*syscalls[])(void) = {
     [SYS_mkdir] sys_mkdir,
     [SYS_close] sys_close,
     [SYS_pidguess] sys_pidguess,
-    [SYS_trace] sys_trace,
-    // [idx] value(in this case functional pointer)
+    [SYS_trace] sys_trace,     // lab-2 activity-1: implement the system call in the kernel.
+    [SYS_sysinfo] sys_sysinfo, // lab-2 activity-2: implement the system call in the kernel.
 };
 
 // modify the syscall() to print the trace output.
@@ -158,6 +160,7 @@ static char *sysCallName[] = {
     [SYS_close] "close",
     [SYS_pidguess] "pidguess",
     [SYS_trace] "trace",
+    [SYS_sysinfo] "SYS_sysinfo",
     // [idx] value(in this case functional pointer)
 };
 

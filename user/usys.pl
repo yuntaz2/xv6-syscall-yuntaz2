@@ -38,4 +38,5 @@ entry("sleep");
 entry("uptime");
 entry("pidguess");
 entry("trace");  # lab-2 activity-1: add a stub
+entry("sysinfo"); # lab-2 activity-2: add a stub
 # transfer from user space to to kernal space for these function 

@@ -21,4 +21,5 @@
 #define SYS_mkdir 20
 #define SYS_close 21
 #define SYS_pidguess 22
-#define SYS_trace 23 // lab-1 activity-1: add a syscall number
+#define SYS_trace 23   // lab-2 activity-1: add a syscall number
+#define SYS_sysinfo 24 // lab-2 activity-2: add a syscall number

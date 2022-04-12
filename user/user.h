@@ -1,5 +1,6 @@
 struct stat;
 struct rtcdate;
+struct sysinfo;
 
 // system calls
 int fork(void);
@@ -23,8 +24,9 @@ int getpid(void);
 char *sbrk(int);
 int sleep(int);
 int uptime(void);
-int pidguess(int); // This function check the current pid with the pid you guess(input) and return 0 or 1.
-int trace(int);    // lab-2 activity-1: trace takes one argument -> an integer mask and return 0 or 1; add a prototype for the system call.
+int pidguess(int);             // This function check the current pid with the pid you guess(input) and return 0 or 1.
+int trace(int);                // lab-2 activity-1: trace takes one argument -> an integer mask and return 0 or 1; add a prototype for the system call.
+int sysinfo(struct sysinfo *); // lab-2 activity-2: sysinfo takes one argument -> an pointer to a struct sysinfo; add a prototype for the system call.
 
 // ulib.c
 int stat(const char *, struct stat *);
